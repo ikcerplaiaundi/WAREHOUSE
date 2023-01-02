@@ -1,7 +1,7 @@
 package clases;
 
 public class Vino extends InterfaceAlcoholico {
-//si es un vino le pasa el dato al interface^ en su etapa de contruccion vino true
+//si es un vino le pasa el dato al interface^ en su etapa de contruccion "vino true"
 	public Vino(boolean vino) {
 		super(vino = true);
 	}
