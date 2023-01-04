@@ -21,11 +21,11 @@ public abstract class InterfaceAlcoholico {// ceveza o vino por lo que se necesi
 		}
 	}
 
-	public double calcularTasa(double graduacion) {
+	public double calcularTasa(double graduacion,int volumenLitros) {
 		if (esFuerte(graduacion)) {
-			return TASAA_BEBIDAS_FUERTES;
+			return ((TASAA_BEBIDAS_FUERTES/100)*volumenLitros);
 		} else {
-			return TASAA_BEBIDAS_SUABES;
+			return ((TASAA_BEBIDAS_SUABES/100)*volumenLitros);
 		}
 	}
 
