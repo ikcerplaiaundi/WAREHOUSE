@@ -1,9 +1,22 @@
 package clases;
 
-public class Vino extends InterfaceAlcoholico {
-//si es un vino le pasa el dato al interface^ en su etapa de contruccion "vino true"
-	public Vino(boolean vino) {
-		super(vino = true);
+public class Vino implements InterfaceAlcoholico {
+
+	public boolean esFuerte(double graduacion) {
+		if (graduacion > 7) {
+			return (true);
+		} else {
+			return (false);
+		}
+
+	}
+
+	public double calcularTasa(double graduacion, int volumenLitros) {
+		if (esFuerte(graduacion)) {
+			return ((TASAA_BEBIDAS_FUERTES / 100) * volumenLitros);
+		} else {
+			return ((TASAA_BEBIDAS_SUABES / 100) * volumenLitros);
+		}
 	}
 
 //declaraciones
@@ -59,6 +72,5 @@ public class Vino extends InterfaceAlcoholico {
 		return "Vino [color=" + color + ", origen=" + origen + ", anio=" + anio + ", tipoDeUva=" + tipoDeUva
 				+ ", gradosAlcohol=" + gradosAlcohol + "]";
 	}
-	
 
 }
