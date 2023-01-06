@@ -54,4 +54,11 @@ public class Vino extends InterfaceAlcoholico {
 		this.gradosAlcohol = gradosAlcohol;
 	}
 
+	@Override
+	public String toString() {
+		return "Vino [color=" + color + ", origen=" + origen + ", anio=" + anio + ", tipoDeUva=" + tipoDeUva
+				+ ", gradosAlcohol=" + gradosAlcohol + "]";
+	}
+	
+
 }
