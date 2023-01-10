@@ -1,6 +1,6 @@
 package clases;
 
-public class Refresco {
+public class Refresco extends Articulo{
 private String sabor;
 private boolean zumo;
 private boolean gaseoso;
@@ -10,12 +10,6 @@ public void visualizarPropiedades() {
 	if(zumo) {System.out.println("es un zumo ");}
 	if(gaseoso) {System.out.print("con gas");}
 	System.out.println("sabor "+sabor+"cantidadAzucar "+cantidadAzucar+"gr");
-	
-}
-
-public boolean esSaludable() {
-	//Un refresco es saludable si tiene menos de 20gr de azúcar.
-	if(cantidadAzucar<20) {return true;}else {return false;}
 	
 }
 

@@ -1,0 +1,3 @@
+refresco,code,name,marka,capacidadbotella,precio,stock,sabor,zumo,gaseoso,cantidadAzucar(gramos)
+cerveza,code,name,marka,capacidadbotella,precio,stock,gradosalcohol,origen,cereal1.cereal2
+vino,code,name,marka,capacidadbotella,precio,stock,gradosalcohol,origen,color,origen,anio,tipodeUva

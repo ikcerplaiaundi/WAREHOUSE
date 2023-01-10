@@ -1,6 +1,6 @@
 package clases;
 
-public class Cerveza implements InterfaceAlcoholico {
+public class Cerveza  extends Articulo implements InterfaceAlcoholico {
 	private String origen;
 	private String[] cereales = new String[2];
 	private double gradosAlcohol;

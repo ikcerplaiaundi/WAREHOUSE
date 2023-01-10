@@ -1,6 +1,6 @@
 package clases;
 
-public class Vino implements InterfaceAlcoholico {
+public class Vino extends Articulo implements InterfaceAlcoholico {
 
 	public boolean esFuerte(double graduacion) {
 		if (graduacion > 7) {
