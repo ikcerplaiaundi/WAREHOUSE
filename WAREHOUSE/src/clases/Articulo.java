@@ -24,9 +24,10 @@ public abstract class Articulo {
 		return false;
 	}
 
-	public void precioTotal(int cantidad) {
-		//precio*cantidad?
-	}
+	public double precioTotal(int cantidad) {
+		// TODO Auto-generated method stub	
+		return 0;
+		}
 
 	public String getCode() {
 		return code;

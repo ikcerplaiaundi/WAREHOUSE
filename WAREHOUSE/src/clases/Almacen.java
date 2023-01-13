@@ -25,6 +25,7 @@ public class Almacen {
 
 					Cerveza cerveza = new Cerveza();
 					// comunes
+					cerveza.setName(partes[0]);
 					cerveza.setCode(partes[1]);
 					cerveza.setMark(partes[2]);
 					cerveza.setCapacidadBotella(Integer.parseInt(partes[3]));
@@ -43,6 +44,7 @@ public class Almacen {
 				case "vino": {
 					Vino vino = new Vino();
 					// comunes
+					vino.setName(partes[0]);
 					vino.setCode(partes[1]);
 					vino.setMark(partes[2]);
 					vino.setCapacidadBotella(Integer.parseInt(partes[3]));
@@ -62,6 +64,7 @@ public class Almacen {
 				case "refresco": {
 					Refresco refresco = new Refresco();
 					// comunes
+					refresco.setName(partes[0]);
 					refresco.setCode(partes[1]);
 					refresco.setMark(partes[2]);
 					refresco.setCapacidadBotella(Integer.parseInt(partes[3]));
@@ -80,7 +83,7 @@ public class Almacen {
 				}
 
 			}
-
+			lectorFichero.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("carga del almacen fallido");
 			e.printStackTrace();
@@ -110,12 +113,24 @@ public class Almacen {
 	}
 
 	public boolean hayStock(String codigoProducto) {
+
+		for (int i = 0; lineaAlmacen.size() > i; i++) {
+			if (lineaAlmacen.get(i).getCode() == codigoProducto) {
+				System.out.println(lineaAlmacen.get(i).getPrecio() + " articulo" + lineaAlmacen.get(i).getName());
+			}
+		}
 		return false;
 
 	}
 
-	public ArrayList stockJusto() {
+	public ArrayList<Articulo> stockJusto() {
+		ArrayList<Articulo> lineaAlmacen = new ArrayList<Articulo>();
 
+		for (int i = 0; this.lineaAlmacen.size() > i; i++) {
+			if (this.lineaAlmacen.get(i).getStock() < 10) {
+				lineaAlmacen.add(this.lineaAlmacen.get(i));
+			}
+		}
 		return lineaAlmacen;
 	}
 
@@ -125,9 +140,123 @@ public class Almacen {
 			if (lineaAlmacen.get(i).getCode() == codigoProducto) {
 				return lineaAlmacen.get(i);
 			}
-			
-		}return null;
 
+		}
+		return null;
+
+	}
+
+	public boolean disponibilidad(int cantidad, String codigoProducto) {
+
+		for (int i = 0; lineaAlmacen.size() > i; i++) {
+			if ((lineaAlmacen.get(i).getCode() == codigoProducto) && (cantidad < lineaAlmacen.get(i).getStock())) {
+				return true;
+			}
+		}
+		return false;
+
+	}
+
+	public ArrayList<Articulo> equibalentes(Articulo articulo) {
+		ArrayList<Articulo> lineaAlmacen = new ArrayList<Articulo>();
+		for (int i = 0; this.lineaAlmacen.size() > i; i++) {
+			if ((this.lineaAlmacen.get(i).getPrecio() - articulo.getPrecio() <= 0.2)
+					&& (articulo.getPrecio() - this.lineaAlmacen.get(i).getPrecio() <= 0.2)) {
+				lineaAlmacen.add(this.lineaAlmacen.get(i));
+			}
+		}
+		return lineaAlmacen;
+	}
+
+	public ArrayList<Articulo> ordenarPorPrecio(String orden) {
+		ArrayList<Articulo> lineaAlmacen1 = this.lineaAlmacen;
+		ArrayList<Articulo> lineaAlmacen2 = new <Articulo>ArrayList();
+		Articulo articuloaux = lineaAlmacen1.get(0);
+		int j = 0;
+		switch (orden) {
+		case "ASC": {
+
+			
+			for (int o = 0; lineaAlmacen1.size() > o;) {
+				j = 0;
+				for (int i = 0; lineaAlmacen1.size() > i; i++) {
+
+					if (articuloaux.getPrecio() < lineaAlmacen1.get(i).getPrecio()) {
+						articuloaux = lineaAlmacen1.get(i);
+						j = i;
+					}
+				}
+				lineaAlmacen1.remove(j);
+				lineaAlmacen2.add(articuloaux);
+			}
+
+		}
+		case "DESC": {
+
+			
+			for (int o = 0; lineaAlmacen1.size() > o;) {
+				j = 0;
+				for (int i = 0; lineaAlmacen1.size() > i; i++) {
+
+					if (articuloaux.getPrecio() > lineaAlmacen1.get(i).getPrecio()) {
+						articuloaux = lineaAlmacen1.get(i);
+						j = i;
+					}
+				}
+				lineaAlmacen1.remove(j);
+				lineaAlmacen2.add(articuloaux);
+			}
+		}
+		default:
+			lineaAlmacen2 = lineaAlmacen1;
+		}
+		return lineaAlmacen2;
+
+	}
+
+	public ArrayList<Articulo> ordenarPorStock(String orden) {
+		ArrayList<Articulo> lineaAlmacen1 = this.lineaAlmacen;
+		ArrayList<Articulo> lineaAlmacen2 = new <Articulo>ArrayList();
+		Articulo articuloaux = lineaAlmacen1.get(0);
+		int j = 0;
+		switch (orden) {
+		case "ASC": {
+
+			
+			for (int o = 0; lineaAlmacen1.size() > o;) {
+				j = 0;
+				for (int i = 0; lineaAlmacen1.size() > i; i++) {
+
+					if (articuloaux.getStock() < lineaAlmacen1.get(i).getStock()) {
+						articuloaux = lineaAlmacen1.get(i);
+						j = i;
+					}
+				}
+				lineaAlmacen1.remove(j);
+				lineaAlmacen2.add(articuloaux);
+			}
+		}
+		case "DESC": {
+
+			
+			for (int o = 0; lineaAlmacen1.size() > o;) {
+				j = 0;
+				for (int i = 0; lineaAlmacen1.size() > i; i++) {
+
+					if (articuloaux.getStock() > lineaAlmacen1.get(i).getStock()) {
+						articuloaux = lineaAlmacen1.get(i);
+						j = i;
+					}
+				}
+
+				lineaAlmacen1.remove(j);
+				lineaAlmacen2.add(articuloaux);
+			}
+		}
+		default:
+			lineaAlmacen2 = lineaAlmacen1;
+		}
+		return lineaAlmacen2;
 	}
 
 }
