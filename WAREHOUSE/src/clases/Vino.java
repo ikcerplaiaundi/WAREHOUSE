@@ -2,22 +2,6 @@ package clases;
 
 public class Vino extends Articulo implements InterfaceAlcoholico {
 
-	public boolean esFuerte(double graduacion) {
-		if (graduacion > 7) {
-			return (true);
-		} else {
-			return (false);
-		}
-
-	}
-
-	public double calcularTasa(double graduacion, int volumenLitros) {
-		if (esFuerte(graduacion)) {
-			return ((TASAA_BEBIDAS_FUERTES / 100) * volumenLitros);
-		} else {
-			return ((TASAA_BEBIDAS_SUABES / 100) * volumenLitros);
-		}
-	}
 
 //declaraciones
 	private String color;
@@ -71,6 +55,22 @@ public class Vino extends Articulo implements InterfaceAlcoholico {
 	public String toString() {
 		return "Vino [color=" + color + ", origen=" + origen + ", anio=" + anio + ", tipoDeUva=" + tipoDeUva
 				+ ", gradosAlcohol=" + gradosAlcohol + "]";
+	}
+	public boolean esFuerte() {
+		if (this.gradosAlcohol > 7) {
+			return (true);
+		} else {
+			return (false);
+		}
+
+	}
+
+	public double calcularTasa(double graduacion, int volumenLitros) {
+		if (esFuerte()) {
+			return ((TASAA_BEBIDAS_FUERTES / 100) * volumenLitros);
+		} else {
+			return ((TASAA_BEBIDAS_SUABES / 100) * volumenLitros);
+		}
 	}
 
 }

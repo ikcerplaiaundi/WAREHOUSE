@@ -5,8 +5,8 @@ public class Cerveza  extends Articulo implements InterfaceAlcoholico {
 	private String[] cereales = new String[2];
 	private double gradosAlcohol;
 
-	public boolean esFuerte(double graduacion) {
-		if (graduacion > 13.5) {
+	public boolean esFuerte() {
+		if (gradosAlcohol > 13.5) {
 			return (true);
 		} else {
 			return (false);
@@ -15,7 +15,7 @@ public class Cerveza  extends Articulo implements InterfaceAlcoholico {
 	}
 
 	public double calcularTasa(double graduacion, int volumenLitros) {
-		if (esFuerte(graduacion)) {
+		if (esFuerte()) {
 			return ((TASAA_BEBIDAS_FUERTES / 100) * volumenLitros);
 		} else {
 			return ((TASAA_BEBIDAS_SUABES / 100) * volumenLitros);
