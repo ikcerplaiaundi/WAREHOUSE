@@ -1,13 +1,13 @@
 package clases;
 
-public abstract class Articulo {
+public abstract class Articulo  {
 	private String code;
 	private String name;
 	private String mark;
 	private int capacidadBotella;
 	private double precio;
 	private int stock;
-
+	
 	public void incrementarStock(int cantidad) {
 		stock+=cantidad;
 	}
@@ -16,19 +16,8 @@ public abstract class Articulo {
 		stock-=cantidad;
 	}
 
-	public void visualizararticulo() {
-		// TODO Auto-generated method stub
-	}
-
-	public boolean saludable() {
-		return false;
-	}
-
-	public double precioTotal(int cantidad) {
-		// TODO Auto-generated method stub	
-		return 0;
-		}
-
+	
+	
 	public String getCode() {
 		return code;
 	}

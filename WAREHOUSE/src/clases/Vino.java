@@ -11,6 +11,7 @@ public class Vino extends Articulo implements InterfaceAlcoholico {
 	private double gradosAlcohol;
 
 //set get
+	
 	public String getColor() {
 		return color;
 	}
@@ -51,10 +52,13 @@ public class Vino extends Articulo implements InterfaceAlcoholico {
 		this.gradosAlcohol = gradosAlcohol;
 	}
 
-	@Override
+	
 	public String toString() {
-		return "Vino [color=" + color + ", origen=" + origen + ", anio=" + anio + ", tipoDeUva=" + tipoDeUva
-				+ ", gradosAlcohol=" + gradosAlcohol + "]";
+		return "color=" + color + ", origen=" + origen + ", anio=" + anio + ", tipoDeUva=" + tipoDeUva
+				+ ", gradosAlcohol=" + gradosAlcohol + " ";
+	}
+	public void visualizararticulo() {
+		System.out.println("Code="+getCode()+" Name="+getName()+" Mark="+getMark()+" Capacidad="+getCapacidadBotella()+" Precio="+getPrecio()+" Stock="+getStock()+ toString());
 	}
 	public boolean esFuerte() {
 		if (this.gradosAlcohol > 7) {
@@ -72,5 +76,12 @@ public class Vino extends Articulo implements InterfaceAlcoholico {
 			return ((TASAA_BEBIDAS_SUABES / 100) * volumenLitros);
 		}
 	}
+	public boolean saludable() {
+    	boolean saludable = false;
+    	if(origen.equals("navarra")) {
+			saludable = true;}
+    	return saludable;
+    }
+	
 
 }
